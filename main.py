@@ -7,7 +7,7 @@ TITLE = input('Enter title: ')
 SUBTITLE = input('Enter subtitle: ')
 SEARCH_KEY = 'https://s3.amazonaws.com/coursera-video-thumbnail-notes/web/'
 IMG_FILE_NAME_LENGTH = 22
-SAVE_PATH = 'D:/Work/coursera-notes-to-pdf/'
+SAVE_PATH = input('Enter path: ')
 ##############################################################################
 
 print('Reading source code...')
