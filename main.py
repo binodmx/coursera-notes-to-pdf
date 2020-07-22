@@ -10,8 +10,11 @@ IMG_FILE_NAME_LENGTH = 22
 SAVE_PATH = input('Enter path: ')
 ##############################################################################
 
+while '\\' in SAVE_PATH:
+    SAVE_PATH = SAVE_PATH.replace('\\', '/')
+
 print('Reading source code...')
-fo = open(SAVE_PATH + 'source_code.txt', 'r', encoding='utf-8')
+fo = open(SAVE_PATH + '/source_code.txt', 'r', encoding='utf-8')
 source_code = fo.read()
 fo.close()
 
@@ -60,7 +63,7 @@ while i < len(imgs):
         pdf.image(imgs[i], IMG_X, current_img_y, IMG_WIDTH, IMG_HEIGHT)
         i += 1
     
-pdf.output(SAVE_PATH + 'Notes.pdf', 'F')
+pdf.output(SAVE_PATH + '/Notes.pdf', 'F')
 
 print('Deleting images...')
 for img in imgs:
