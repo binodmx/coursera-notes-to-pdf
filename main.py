@@ -3,13 +3,14 @@ import urllib
 from fpdf import FPDF
 
 ##############################################################################
-TITLE = 'Course Title'
-SUBTITLE = 'My Notes'
+TITLE = input('Enter title: ')
+SUBTITLE = input('Enter subtitle: ')
 SEARCH_KEY = 'https://s3.amazonaws.com/coursera-video-thumbnail-notes/web/'
 IMG_FILE_NAME_LENGTH = 22
-SAVE_PATH = '/content/drive/My Drive/Documents/test/'
+SAVE_PATH = 'D:/Work/coursera-notes-to-pdf/'
 ##############################################################################
 
+print('Reading source code...')
 fo = open(SAVE_PATH + 'source_code.txt', 'r', encoding='utf-8')
 source_code = fo.read()
 fo.close()
@@ -18,6 +19,7 @@ imgs = []
 index = 0
 img_count = source_code.count(SEARCH_KEY)
 
+print('Downloading images...')
 for i in range(img_count):
     index = source_code.index(SEARCH_KEY, index + 1)
     start = index + len(SEARCH_KEY)
@@ -28,9 +30,9 @@ for i in range(img_count):
     new_file_name = file_name + '.jpg'
     os.rename(SAVE_PATH + file_name, SAVE_PATH + new_file_name)
     imgs.append(SAVE_PATH + new_file_name)
+print('%i images downloaded' % img_count)
 
-print('%i images identified' % img_count)
-
+print('Generating pdf...')
 pdf = FPDF()
 pdf.add_page()
 pdf.set_font('Arial', 'B', 18)
@@ -59,7 +61,9 @@ while i < len(imgs):
         i += 1
     
 pdf.output(SAVE_PATH + 'Notes.pdf', 'F')
-print('Notes.pdf file is created successfully')
 
+print('Deleting images...')
 for img in imgs:
-  os.remove(img)
+    os.remove(img)
+
+print('Notes.pdf file is created successfully')
