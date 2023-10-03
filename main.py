@@ -5,8 +5,8 @@ from fpdf import FPDF
 ##############################################################################
 TITLE = input('Enter title: ')
 SUBTITLE = input('Enter subtitle: ')
-SEARCH_KEY = 'https://s3.amazonaws.com/coursera-video-thumbnail-notes/web/'
-IMG_FILE_NAME_LENGTH = 22
+SEARCH_KEY = 'https://coursera-video-thumbnail-notes.s3.amazonaws.com/web/'
+IMG_FILE_NAME_LENGTH = 44
 SAVE_PATH = input('Enter path: ')
 ##############################################################################
 
